@@ -1,0 +1,194 @@
+body{
+   margin: 0px;
+    
+}
+.logo {
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    background-color:black;
+    color: white;
+    font-size: 10px;
+    font-family:Tahoma;
+ 
+}
+.imgLogo-nombreLogo{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.btn-menu{
+    color:white;
+    font-size: 15px;
+    margin: 20px;
+
+}
+.logo-img{
+    width: 125px;
+}
+
+.menu {
+    border-bottom: 4px solid white;
+    width: 100%;
+    display: flex;
+    background-color: black; 
+}
+ul.navegacion {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: none;
+    flex-direction: column;
+}
+ul.navegacion.show {
+    display: flex;
+}
+
+ul.navegacion li {
+    list-style: none;
+    margin: 0px 0px;
+    padding: 15px 20px;
+    font-family: 'Arial Narrow Bold';
+    
+}
+
+ul.navegacion  li a {
+    text-decoration: none;
+    color: white;
+   
+}
+
+ul.navegacion li:hover {
+    background-color: gray;
+}
+
+.slider{
+    width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+.slider ul{
+    display: flex;
+    padding: 0;
+    width: 400%;
+    animation: cambio 10s infinite alternate;
+}
+.slider li{
+    width: 100%;
+    list-style: none;
+}
+.slider img {
+    width: 400px;
+    height: 250.725px;
+    display: block;
+    margin: 0;
+}
+@keyframes cambio {     
+    0% {margin-left: 0;}
+    20% {margin-left: 0;}
+
+    25% {margin-left: -100%;}
+    45% {margin-left: -100%;}
+
+    50% {margin-left: -200%;}
+    70% {margin-left: -200%;}
+
+    75% {margin-left: -300%;}
+    100% {margin-left: -300%;}
+}
+.sponsors img {
+    width: 90px;
+}
+.sponsors{
+    margin-top: 25px;
+    display: grid;
+    grid-template-rows: repeat(2f);
+    grid-template-areas: 
+      "1 2 3 4";
+
+}
+.container-redsocial{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px;
+    background-color: black; 
+    font-family:tahoma;
+    font-size: 15px;
+    color: white;
+    text-transform: uppercase;
+    
+}
+.logoig{
+    align-items: flex-start; 
+    width: 30px;
+    height:30px;
+    border: 1px solid black ;
+    background-color: inherit;
+    
+}
+.logofb{
+    align-items: flex-end;
+    border: 1px solid black;
+    width: 30px;
+    height:30px; 
+    background-color:inherit;
+}
+
+/* ------------- WEB2 ---------------*/
+
+
+
+
+
+
+
+
+@media screen and (min-width: 660px){ /*esto es lo que pasa cuando se hace grande*/
+    .logo-img{
+        width: 200px;
+    }
+    .logo{
+        font-size: 17px;
+    }
+    .btn-menu {
+       display: none;
+    }
+    ul.navegacion {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        font-size: 25px;
+        
+    }
+    .slider img {
+        width: 788px;
+        height: auto;
+        margin: auto;
+    
+    }
+    .sponsors {
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .sponsors img{
+        width: auto;
+    }
+
+    .lista-producto{
+        display: flex;
+        flex-direction: column;
+    }
+    .producto{
+        margin: 200px;
+    }
+    
+   
+}
+
+             
+
