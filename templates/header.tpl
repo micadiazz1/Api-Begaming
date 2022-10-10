@@ -27,14 +27,7 @@
                 <li><a href="productos">Productos</a></li>        
             </ul>
         </nav>
-    <!---  
-
-        {{if {$smarty.session.email} == ""}
-            <a href="login">login</a>
-        {else}
-            <a href="logout">logout</a>
-        {/if}}
-     --> 
+    
  </header>
     
          
