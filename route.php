@@ -3,6 +3,7 @@
 require_once "./controller/HomeController.php";
 require_once "./controller/ProductosController.php";
 require_once "./controller/AdminController.php";
+require_once "controller\LoginController.php";
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -19,9 +20,18 @@ $params = explode('/', $action);
 $homeController = new HomeController();
 $productosController = new productosController();
 $adminController = new AdminController();
-
+$loginController = new LoginController();
 // determina que camino seguir según la acción
 switch ($params[0]) {
+    case 'login': 
+        $loginController->login(); 
+        break;
+    case 'verify': 
+        $loginController->verifyLogin(); 
+        break;
+    case 'logout': 
+        $loginController->logout(); 
+        break;
     case 'home': 
         $homeController->showHome(); 
         break;

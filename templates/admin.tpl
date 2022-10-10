@@ -1,7 +1,7 @@
 {include file='templates/header.tpl'}
 
     
-    <a href="">Logout</a>
+    <a href="logout/">Logout</a>
     
     <h2>Lista de productos:</h2>
 

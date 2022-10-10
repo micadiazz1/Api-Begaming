@@ -25,7 +25,7 @@
             <ul class="navegacion">
                 <li><a href="home">Inicio</a></li>
                 <li><a href="productos">Productos</a></li>
-                
+                 
             </ul>
         </nav>
  </header>
