@@ -1,5 +1,5 @@
 {include file='templates/header.tpl'}
-    
+   
     <div class="slider">
         <ul>
             <li><img src="imagen/Mother.jpg" alt="Mother"></li>

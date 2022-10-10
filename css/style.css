@@ -178,15 +178,16 @@ ul.navegacion li:hover {
     .sponsors img{
         width: auto;
     }
-
-    .lista-producto{
-        display: flex;
-        flex-direction: column;
-    }
-    .producto{
-        margin: 200px;
+    .productos{
+        margin-top: 25px;
+        display: grid;
+        grid-template-rows: repeat(2f);
+        grid-template-areas: 
+          "lista-categoria lista-producto";
+    
     }
     
+  
    
 }
 

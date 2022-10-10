@@ -7,7 +7,9 @@
             <li> producto:{$categoria->nombre}</li>
             <li> Descripcion:{$categoria->descripcion}</li>
             <li> Precio:{$categoria->precio}</li>
-        {/foreach}
+            <br>  
+        {/foreach}    
+        <br>
     </ul>
     
            

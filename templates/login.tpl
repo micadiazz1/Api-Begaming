@@ -12,5 +12,4 @@
     <p>{$error}</p>
 
 
-
 {include file='templates/footer.tpl'}
