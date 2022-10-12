@@ -7,6 +7,7 @@
             <li> producto:{$categoria->nombre}</li>
             <li> Descripcion:{$categoria->descripcion}</li>
             <li> Precio:{$categoria->precio}</li>
+            <img class="imgDetalle" src = "{$categoria->imagen}" >
             <br>  
         {/foreach}    
         <br>

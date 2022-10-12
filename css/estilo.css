@@ -221,8 +221,8 @@ ul.navegacion li:hover {
         width: 100%;
     }
     .imgAdmin{
-        height: 10%;
-        width: 10%;
+        height: 100px;
+        width: 100px;
     }
     .imgDetalle{
         height: 25%;
@@ -232,7 +232,10 @@ ul.navegacion li:hover {
        
         margin-top: 10px;
     }
-    
+    .imgDetalle{
+        height: 100px;
+        width: 100px;
+    }
 }
 
              

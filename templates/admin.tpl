@@ -6,20 +6,37 @@
     <h2>Lista de productos:</h2>
 
     <div>
-        <ul>
-            {foreach from=$productos item=$producto}
-                <li> 
-                    Nombre: {$producto->nombre} -
-                    Descripcion: {$producto->descripcion} - 
-                    Precio: {$producto->precio} - 
-                    Categoria: {$producto->nombre_categoria}
-                    {if isset($producto->imagen)}
-                        <img class="imgAdmin" src="{$producto->imagen}"/>
-                    {/if} 
-                    <a href="deleteProducto/{$producto->id_producto}">borrar</a> - 
-                    <a href="formEditarProducto/{$producto->id_producto}">modificar</a> </li>         
-            {/foreach}
-        </ul>
+        <table class="table">
+  <thead>
+    <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio</th>
+        <th scope="col">categoria</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+        {foreach from=$productos item=$producto}
+        <tr>
+            <td >{$producto->nombre}</td>
+            <td>{$producto->descripcion}</td>
+            <td> {$producto->precio}</td>
+            <td>{$producto->nombre_categoria}</td>
+            
+            {if isset($producto->imagen)}
+                <td><img class="imgAdmin" src="{$producto->imagen}"/></td>
+            {/if} 
+            <td> <a href="deleteProducto/{$producto->id_producto}" class="btn btn-outline-danger">borrar</a></td>
+            <td> <a href="formEditarProducto/{$producto->id_producto}" class="btn btn-outline-primary" >modificar</a> </td>
+
+        </tr>
+        {/foreach}
+        <tr>
+    </tbody> 
+</table>
     </div>
 
     <p>Agregue un nuevo producto:</p>
