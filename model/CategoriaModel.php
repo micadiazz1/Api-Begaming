@@ -16,9 +16,9 @@
                 
         }
 
-        // VERIFICAR SI ESTA BIEN EL INNER JOIN
-        function getCategoria($id){
-            $query = $this->db->prepare('SELECT producto.*, categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria_fk = categoria.id_categoria WHERE producto.id_categoria_fk = ?');
+         
+        function getProductoByCategoria($id){
+            $query = $this->db->prepare('SELECT * from producto where id_categoria_fk = ?');
             $query->execute([$id]);
             $detailCategoria = $query->fetchAll(PDO::FETCH_OBJ);
             

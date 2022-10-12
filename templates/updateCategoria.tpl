@@ -1,6 +1,6 @@
 {include file='templates/header.tpl'}
-    <form action="confirmacionUpdateCategoria/{$id}" method="post">
-            <input type="text" name="nombre_categoria" id="nombre_categoria"  placeholder="Nombre">
+    <form action="confirmacionUpdateCategoria/{$categoria->id_categoria}" method="post">
+            <input type="text" name="nombre_categoria" id="nombre_categoria"  placeholder="Nombre" value="{$categoria->nombre_categoria}">
             <input type="submit" value="modificar">
 
     </form>

@@ -35,16 +35,16 @@
         }
 
 
-        function updateProductoView($categorias,$id){
-            $this->smarty->assign('id', $id);
+        function updateProductoView($categorias,$producto){
+            $this->smarty->assign('producto', $producto);
             
             $this->smarty->assign('categorias', $categorias);
             
             $this->smarty->display('templates/updateProducto.tpl');
             
         }
-        function updateCategoriaView($id){
-            $this->smarty->assign('id', $id);
+        function updateCategoriaView($categoria){
+            $this->smarty->assign('categoria', $categoria);
            
             $this->smarty->display('templates/updateCategoria.tpl');
             

@@ -24,10 +24,20 @@
         <nav class="menu">
             <ul class="navegacion">
                 <li><a href="home">Inicio</a></li>
-                <li><a href="productos">Productos</a></li>        
+                <li><a href="productos">Productos</a></li>
+                        
             </ul>
         </nav>
-    
+   
+
+        {if isset($smarty.session.email)}
+          <a class="btn btn-danger" href="logout"> logout</a>
+          <a class="btn btn-warning" href="admin"> ADMIN</a>  
+            
+        {else}
+            <a href="login" class="btn btn-success">login</a>
+        {/if} 
+     
  </header>
     
          

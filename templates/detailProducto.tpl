@@ -6,9 +6,14 @@
         <li> nombre: {$producto->nombre} </li>
         <li> Descripcion: {$producto->descripcion} </li>
         <li> Precio: {$producto->precio}</li>
+        
          
-    </ul> 
+    </ul>
+     {if isset($producto->imagen)}
+        <img class="imgDetalle"src="{$producto->imagen}"/>
+    {/if}
 
-    <a href="productos">Volver atras</a>
+    
+    <a href="productos" class="btn btn-outline-dark">Volver atras</a>
 
 {include file='templates/footer.tpl'}

@@ -181,14 +181,58 @@ ul.navegacion li:hover {
     .productos{
         margin-top: 25px;
         display: grid;
-        grid-template-rows: repeat(2f);
+        grid-template-columns: 1fr 1fr 2fr;
+       
         grid-template-areas: 
-          "lista-categoria lista-producto";
+          "categoria producto producto "
+          "categoria producto producto ";
+          
+        
+    }
+    .container-productos{
+        
+        grid-area: "producto";
+       
+    }
+    .lista-producto{
+        
+       padding: 10px;
+
+    }
+    .lista-categoria {
+        grid-area: "categoria";
     
     }
+    .lista-categoria a{
+        text-decoration: none;
+        color: black;
     
-  
-   
+    }
+    .lista-categoria a:hover{
+        background-color:rgb(211, 206, 206);
+        color: black;
+    
+    }
+    ul.list-group{
+        background-color:rgb(173, 171, 171);
+    }
+    .imgProductos{
+        height: 100%;
+        width: 100%;
+    }
+    .imgAdmin{
+        height: 10%;
+        width: 10%;
+    }
+    .imgDetalle{
+        height: 25%;
+        width: 25%;
+    }
+    .verMas {
+       
+        margin-top: 10px;
+    }
+    
 }
 
              

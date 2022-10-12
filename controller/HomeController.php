@@ -12,7 +12,7 @@
            
         }
         function showHome() {
-    
+            session_start();
             $this->view->showViewHome();
             
 

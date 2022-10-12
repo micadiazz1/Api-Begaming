@@ -19,7 +19,7 @@
          
         }
         function showProductos() {
-            
+            session_start();
             $producto = $this->productoModel->getProductos();
             $categoria = $this->categoriaModel->getCategorias();
       
@@ -29,14 +29,14 @@
         }
 
        function detailProduct($id_producto){
-            
+            session_start();
             $producto = $this->productoModel->getProducto($id_producto);
             $this->view->detailProductoView($producto);
 
         }
         function detailCategoria($id){
-            
-            $productosCategoria = $this->categoriaModel->getCategoria($id);
+            session_start();
+            $productosCategoria = $this->categoriaModel->getProductoByCategoria($id);
             $categoria = $this->categoriaModel->getCategoriaID($id);
             $this->view->detailCategoriaView($productosCategoria, $categoria);
 
@@ -49,8 +49,16 @@
            $descripcion = $_POST['descripcion'];
            $precio= $_POST['precio'];
            $categoria= $_POST['id_categoria'];
-            $this->productoModel->inssertProducto($nombre,$descripcion,$precio,$categoria);
+           
+            if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == 
+            "image/jpeg" || $_FILES['imagen']['type'] == "image/png"){
+                $this->productoModel->inssertProducto($nombre,$descripcion,$precio,$categoria,$_FILES['imagen']['tmp_name']);
+            }   
+            else{
+                $this->productoModel->inssertProducto($nombre,$descripcion,$precio,$categoria);
+            }
             $this->adminView->showAdminLocation();
+            
         } 
 
         
@@ -76,23 +84,38 @@
     
 
         function formEditarProducto($id_producto){
-            
+            session_start();
             //mostramos form
-            $this->productoModel->getProducto($id_producto);
+            $producto = $this->productoModel->getProducto($id_producto);
             $categoria = $this->categoriaModel->getCategorias();
-            $this->view->updateProductoView($categoria, $id_producto);
+            $this->view->updateProductoView($categoria, $producto);
         }
+        
         function formEditarCategoria($id_Categoria){
+            session_start();
+            $categoria = $this->categoriaModel->getCategoriaID($id_Categoria);
+            $this->view->updateCategoriaview($categoria);
+        }
+
+        function updateProducto ($id_producto){
             
-            $this->categoriaModel->getCategoria($id_Categoria);
-            $this->view->updateCategoriaview($id_Categoria);
-        }  
-         function updateProducto ($id_producto){
-            
-            $this->productoModel->updateProducto($_POST['nombre'],$_POST['descripcion'],$_POST['precio'], $_POST['id_categoria'],$id_producto);   
+            $nombre= $_POST['nombre'];
+            $descripcion = $_POST['descripcion'];
+            $precio= $_POST['precio'];
+            $categoria = $_POST['id_categoria'];
+           
+           
+            if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == 
+            "image/jpeg" || $_FILES['imagen']['type'] == "image/png"){
+                $this->productoModel->updateProducto($nombre,$descripcion,$precio,$categoria,$id_producto,$_FILES['imagen']['tmp_name']);
+
+            }
+            else{
+                $this->productoModel->updateProducto($nombre,$descripcion,$precio,$categoria,$id_producto); 
+            }
             $this->adminView->showAdminLocation();   
         }
-       function updateCategoria($id_categoria){
+        function updateCategoria($id_categoria){
             $this->categoriaModel->updateCategoria($_POST['nombre_categoria'],$id_categoria);
             $this->adminView->showAdminLocation(); 
         }

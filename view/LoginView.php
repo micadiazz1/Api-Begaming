@@ -11,7 +11,7 @@
         function showLogin($error = NULL){
             $this->smarty->assign('error', $error);
             $this->smarty->display('templates/login.tpl');
-           
+            
             
         }
         function showAdmin(){

@@ -1,7 +1,7 @@
 {include file='templates/header.tpl'}
 
     
-    <a href="logout/">Logout</a>
+   
     
     <h2>Lista de productos:</h2>
 
@@ -12,7 +12,10 @@
                     Nombre: {$producto->nombre} -
                     Descripcion: {$producto->descripcion} - 
                     Precio: {$producto->precio} - 
-                    Categoria: {$producto->nombre_categoria}  
+                    Categoria: {$producto->nombre_categoria}
+                    {if isset($producto->imagen)}
+                        <img class="imgAdmin" src="{$producto->imagen}"/>
+                    {/if} 
                     <a href="deleteProducto/{$producto->id_producto}">borrar</a> - 
                     <a href="formEditarProducto/{$producto->id_producto}">modificar</a> </li>         
             {/foreach}
@@ -21,8 +24,8 @@
 
     <p>Agregue un nuevo producto:</p>
 
-    <form action="createProducto" method="post">
-            <input type="text" name="nombre" id="nombre"  placeholder="Nombre">
+    <form action="createProducto" method="post" enctype="multipart/form-data">
+            <input type="text" name="nombre" id="nombre"  placeholder="Nombre" >
             <input type="text" name="descripcion" id="descripcion"  placeholder="Descripcion">
             <input type="number" name="precio" id="precio"  placeholder="Precio">
             <select type=text name="id_categoria" id="id_categoria">
@@ -30,7 +33,7 @@
                     <option value={$categoria->id_categoria}>{$categoria->nombre_categoria} </option>         
                 {/foreach}
             </select>
-           
+            <input type="file" name="imagen" id="imageToUpload">
             <input type="submit" value="Guardar">
             
     </form>

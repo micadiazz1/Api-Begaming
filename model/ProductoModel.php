@@ -37,19 +37,52 @@
         return $productos;
        
        }
-       function inssertProducto($nombre, $descripcion, $precio, $categoria){
-           $query = $this->db->prepare('INSERT INTO producto(nombre, descripcion, precio, id_categoria_fk) VALUES(?, ?, ?, ?)');
-           $query->execute([$nombre, $descripcion, $precio, $categoria]);
+       
+       function inssertProducto($nombre, $descripcion, $precio, $categoria,$imagen = null){
+           $pathImg = null;
+           
+            if ($imagen){
+                $pathImg = $this->uploadImage($imagen);
+
+                $query = $this->db->prepare('INSERT INTO producto(nombre, descripcion, precio, id_categoria_fk, imagen) VALUES(?, ?, ?,?, ?)');
+                $query->execute([$nombre, $descripcion, $precio, $categoria, $pathImg]);
+                return $this->db->lastInsertId();
+            }
+            
+            else{
+                $query = $this->db->prepare('INSERT INTO producto(nombre, descripcion, precio, id_categoria_fk) VALUES(?, ?, ?, ?)');
+                $query->execute([$nombre, $descripcion, $precio, $categoria]);
+            } 
        }
+
+       
+       
+
+        private function uploadImage($image){
+            $target = 'img/' . uniqid() . '.jpg';
+            move_uploaded_file($image, $target);
+            return $target;
+        }
+
+
        function deleteProducto($id_producto){
             $query = $this->db->prepare('DELETE FROM producto WHERE id_producto=?');
             $query->execute([$id_producto]);
        }
-       function updateProducto($nombre, $descripcion, $precio, $categoria, $id_producto){
-            $query= $this->db->prepare("UPDATE producto SET nombre = ?, descripcion = ?, precio = ?, id_categoria_fk = ? WHERE id_producto = ?");
-            $query->execute([$nombre, $descripcion, $precio, $categoria,$id_producto]);
-
-       }  
+       function updateProducto($nombre, $descripcion, $precio, $categoria, $id_producto,$imagen = null){
+        $pathImg = null;
+           
+            if ($imagen){
+                $pathImg  = $this->uploadImage($imagen);
+                $query= $this->db->prepare('UPDATE producto SET nombre = ?, descripcion = ?, precio = ?, imagen = ?, id_categoria_fk = ? WHERE id_producto = ?');
+                $query->execute([$nombre, $descripcion, $precio, $categoria,$id_producto,$pathImg ]);
+    
+            }
+            else{
+                $query= $this->db->prepare('UPDATE producto SET nombre = ?, descripcion = ?, precio = ?, id_categoria_fk = ? WHERE id_producto = ?');
+                $query->execute([$nombre, $descripcion, $precio, $categoria,$id_producto ]);
+            }
+       } 
    }
         
        

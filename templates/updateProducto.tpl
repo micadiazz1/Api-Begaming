@@ -1,15 +1,26 @@
 {include file='templates/header.tpl'}
     
     
-    <form action="confirmacionUpdateProducto/{$id}" method="post">
-            <input type="text" name="nombre" id="nombre"  placeholder="Nombre"   >
-            <input type="text" name="descripcion" id="descripcion"  placeholder="Descripcion" >
-            <input type="number" name="precio" id="precio"  placeholder="Precio" >
+    <form action="confirmacionUpdateProducto/{$producto->id_producto}" method="post" enctype="multipart/form-data">
+            
+            <input type="text" name="nombre" id="nombre"  placeholder="Nombre"  value="{$producto->nombre}" >
+            <input type="text" name="descripcion" id="descripcion"  placeholder="Descripcion" value="{$producto->descripcion}">
+            <input type="number" name="precio" id="precio"  placeholder="Precio" value="{$producto->precio}">
             <select type="text" name="id_categoria" id="id_categoria">
+                <option value="{$producto->id_producto_fk}"> {$producto->nombre_categoria}</option>
                 {foreach from=$categorias item=$categoria}
-                    <option value={$categoria->id_categoria}>{$categoria->nombre_categoria} </option>         
+                    
+                    {if  $producto->nombre_categoria != $categoria ->nombre_categoria }
+                          <option value={$categoria->id_categoria}>{$categoria->nombre_categoria} </option>  
+                    {/if}
+                            
+                
                 {/foreach}
+                
             </select>
+            
+            <input type="file" name="imagen" id="imageToUpload">
+            
             <input type="submit" value="modificar">
             
     </form>
