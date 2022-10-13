@@ -34,7 +34,7 @@
 
         </tr>
         {/foreach}
-        <tr>
+        
     </tbody> 
 </table>
     </div>

@@ -107,11 +107,13 @@
            
             if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == 
             "image/jpeg" || $_FILES['imagen']['type'] == "image/png"){
-                $this->productoModel->updateProducto($nombre,$descripcion,$precio,$categoria,$id_producto,$_FILES['imagen']['tmp_name']);
+
+                
+                $this->productoModel->updateProducto($id_producto,$nombre,$descripcion,$precio,$categoria,$_FILES['imagen']['tmp_name']);
 
             }
             else{
-                $this->productoModel->updateProducto($nombre,$descripcion,$precio,$categoria,$id_producto); 
+                $this->productoModel->updateProducto($id_producto,$nombre,$descripcion,$precio,$categoria); 
             }
             $this->adminView->showAdminLocation();   
         }

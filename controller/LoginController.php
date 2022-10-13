@@ -47,7 +47,8 @@
         function logout(){
             session_start();
             session_destroy();
-            $this->view->showLogin("Deslogueado");
+            //$this->view->showLogin("Deslogueado");
+            header("Location: ". BASE_URL . "login");
         }
     
 

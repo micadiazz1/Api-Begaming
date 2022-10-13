@@ -44,9 +44,9 @@
             if ($imagen){
                 $pathImg = $this->uploadImage($imagen);
 
-                $query = $this->db->prepare('INSERT INTO producto(nombre, descripcion, precio, id_categoria_fk, imagen) VALUES(?, ?, ?,?, ?)');
+                $query = $this->db->prepare('INSERT INTO producto(nombre, descripcion, precio, id_categoria_fk, imagen)  VALUES(?, ?, ?,?, ?)');
                 $query->execute([$nombre, $descripcion, $precio, $categoria, $pathImg]);
-                return $this->db->lastInsertId();
+               
             }
             
             else{
@@ -69,16 +69,19 @@
             $query = $this->db->prepare('DELETE FROM producto WHERE id_producto=?');
             $query->execute([$id_producto]);
        }
-       function updateProducto($nombre, $descripcion, $precio, $categoria, $id_producto,$imagen = null){
+
+       function updateProducto($id_producto,$nombre, $descripcion, $precio, $categoria,$imagen = null){
         $pathImg = null;
            
             if ($imagen){
+     
                 $pathImg  = $this->uploadImage($imagen);
                 $query= $this->db->prepare('UPDATE producto SET nombre = ?, descripcion = ?, precio = ?, imagen = ?, id_categoria_fk = ? WHERE id_producto = ?');
-                $query->execute([$nombre, $descripcion, $precio, $categoria,$id_producto,$pathImg ]);
-    
+                $query->execute([$nombre, $descripcion, $precio, $pathImg,$categoria,$id_producto]);
+                
             }
             else{
+                
                 $query= $this->db->prepare('UPDATE producto SET nombre = ?, descripcion = ?, precio = ?, id_categoria_fk = ? WHERE id_producto = ?');
                 $query->execute([$nombre, $descripcion, $precio, $categoria,$id_producto ]);
             }
