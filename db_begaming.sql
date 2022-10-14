@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-10-2022 a las 20:29:18
+-- Tiempo de generación: 14-10-2022 a las 21:07:14
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.6
 
@@ -37,7 +37,11 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`) VALUES
-(1, 'Memorias Ram');
+(1, 'Memoria Ram'),
+(8, 'Procesador'),
+(9, 'Mother'),
+(10, 'Fuente'),
+(11, 'Placa de video');
 
 -- --------------------------------------------------------
 
@@ -59,7 +63,14 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id_producto`, `nombre`, `descripcion`, `precio`, `imagen`, `id_categoria_fk`) VALUES
-(1, 'Hyper', 'Ryzen 5 5600g 4.4ghz', 4, 'img/63487c2590d7d.jpg', 1);
+(1, ' ASUS PRIME A520M-K AM4 ', 'Plataforma AMD Socket AM4 Ryzen 3th Gen,AM4 APU 3th Gen,AM4 Ryzen 4th Gen,AM4 APU 5000 Chipsets Principal AMD A520 Boton Bios Flashback No', 17350, 'img/6349b0af3752e.jpg', 9),
+(3, 'Asrock B450 Steel Legend AM4 RGB Dual M.2 Dual USB 3.1 ', 'Plataforma AMD Socket AM4 APU 1th Gen,AM4 APU 2th Gen,AM4 Ryzen 1th Gen,AM4 Ryzen 2th Gen,AM4 Ryzen 3th Gen,AM4 APU 3th Gen,AM4 Ryzen 4th Gen,AM4 APU 5000 Chipsets Principal AMD B450 Boton Bios Flashback No', 30000, 'img/6349b16d923e1.jpg', 9),
+(4, 'GeiL DDR4 16GB 3000MHz Super Luce RGB Black ', 'Capacidad 16 gb Velocidad 3000 mhz Tipo DDR4 Cantidad De Memorias 1 Latencia 16 cl Voltaje 1.35 v', 21100, 'img/6349b18faac0a.jpg', 1),
+(5, 'AMD Ryzen 7 5800X 4.7GHz Turbo AM4 - No incluye Cooler ', 'Modelo 5800X Socket AM4 Ryzen 4th Gen Núcleos 8 Frecuencia 3800.00 mhz Proceso De Fabricación 7 nm Chipset Gpu NO Posee Gráficos Integrados Hilos 16 Frecuencia Turbo 4700 mhz Familia AMD RYZEN 7', 72450, 'img/6349b1d382cda.jpg', 8),
+(6, 'Intel Core i5 10400F 4.3GHz Turbo 1200 Comet Lake', 'Modelo Core i5 10400F Socket 1200 Comet Lake Núcleos 6 Frecuencia 2900.00 mhz Proceso De Fabricación 14 nm Chipset Gpu NO Posee Gráficos Integrados Hilos 12 Frecuencia Turbo 4300 mhz Familia Intel Core i5', 30600, 'img/6349b20d25efc.jpg', 8),
+(7, 'MSI GeForce RTX 3090 24GB GDDR6X GAMING X TRIO', 'Tipo pcie Chipset Gpu RTX 3090 Entrada Video No Puente Para Sli/croosfirex SLI Doble Puente No Características Especiales Ray Tracing + DLSS', 295000, 'img/6349b26cae6ec.jpg', 11),
+(8, 'Placa de Video Asrock RX 570 8GB GDDR5 Phantom Gaming Elite ', 'Tipo pcie Chipset Gpu RX 570 Entrada Video No Puente Para Sli/croosfirex Crossfire Doble Puente No', 50000, 'img/6349b2bc5abbc.jpg', 11),
+(9, 'ASUS ROG STRIX 850W 80 Plus Gold Full Modular White 850G ', 'Watts Nominal 850 w Watts Reales 840 w Formato ATX Compatible Con Posición Inferior Si Certificacion 80 Plus 80 PLUS Gold Modo Híbrido Si Tipo De Cableado Full Modular Ampers En Linea +12V 70 a Fuente Digital No Color Blanco', 41450, 'img/6349b30e2268b.jpg', 10);
 
 -- --------------------------------------------------------
 
@@ -111,13 +122,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `user`
