@@ -4,10 +4,10 @@
        
        private $db;
 
-       function __construct(){
+        function __construct(){
           $this->db = new PDO('mysql:host=localhost;'.'dbname=db_begaming;charset=utf8', 'root', '');
-       }
-       function getProductos(){ 
+        }
+        function getProductos(){ 
            //muestro todos los productos
            $query = $this->db->prepare('SELECT * from producto');
            $query->execute();
@@ -16,8 +16,16 @@
    
            return $product;
                    
-       }
-       function getProducto($id){
+        }
+        function getProductoByCategoria($id){
+            $query = $this->db->prepare('SELECT * from producto where id_categoria_fk = ?');
+            $query->execute([$id]);
+            $detailCategoria = $query->fetchAll(PDO::FETCH_OBJ);
+            
+            return $detailCategoria;
+        }
+
+        function getProducto($id){
            //MUESTRO EL DETALLE  entre las dos tablas DE UN SOLO PRODUCTO
            $query = $this->db->prepare('SELECT producto.*, categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria_fk = categoria.id_categoria WHERE id_producto = ?');
            $query->execute([$id]);
@@ -26,17 +34,17 @@
            return $detailProduct;
            
        
-       }
+        }
        /** hago un inner join entre podructo agarrando TODO lo comun entre las dos tablas */
-       function getProductosAll(){ 
-        //muestro todos los productos
-        $query = $this->db->prepare( 'SELECT producto.*, categoria.nombre_categoria FROM producto INNER JOIN categoria on producto.id_categoria_fk = categoria.id_categoria');
-        $query->execute();
-        $productos = $query->fetchAll(PDO::FETCH_OBJ);
+        function getProductosAll(){ 
+            //muestro todos los productos
+            $query = $this->db->prepare( 'SELECT producto.*, categoria.nombre_categoria FROM producto INNER JOIN categoria on producto.id_categoria_fk = categoria.id_categoria');
+            $query->execute();
+            $productos = $query->fetchAll(PDO::FETCH_OBJ);
 
-        return $productos;
+            return $productos;
        
-       }
+        }
        
        function inssertProducto($nombre, $descripcion, $precio, $categoria,$imagen = null){
            $pathImg = null;

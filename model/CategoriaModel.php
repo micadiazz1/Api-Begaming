@@ -17,13 +17,7 @@
         }
 
          
-        function getProductoByCategoria($id){
-            $query = $this->db->prepare('SELECT * from producto where id_categoria_fk = ?');
-            $query->execute([$id]);
-            $detailCategoria = $query->fetchAll(PDO::FETCH_OBJ);
-            
-            return $detailCategoria;
-        }
+       
 
         function getCategoriaID($id){
             $query = $this->db->prepare('SELECT * from categoria WHERE id_categoria = ?');

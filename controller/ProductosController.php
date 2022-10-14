@@ -19,7 +19,7 @@
             $this->adminView = new AdminView();
             $this->authHelper = new AuthHelper();
         }
-        
+
         function showProductos() {
             session_start();
             $producto = $this->productoModel->getProductos();
@@ -38,7 +38,7 @@
         }
         function detailCategoria($id){
             session_start();
-            $productosCategoria = $this->categoriaModel->getProductoByCategoria($id);
+            $productosCategoria = $this->productoModel->getProductoByCategoria($id);
             $categoria = $this->categoriaModel->getCategoriaID($id);
             $this->view->detailCategoriaView($productosCategoria, $categoria);
 
@@ -86,10 +86,18 @@
       
         function deleteCategoria($id_categoria){
             if ($this->authHelper->checkLogin()){
-                $this->categoriaModel->deleteCategoria($id_categoria);
-                $this->adminView->showAdminLocation();
+                //si la id que queres borrar no esta  en la tabla de producto{.....}
+                if (empty($this->productoModel->getProductoByCategoria($id_categoria))){
+                    $this->categoriaModel->deleteCategoria($id_categoria);
+                    $this->adminView->showAdminLocation();
+                }
+                else{ 
+                    $productos = $this->productoModel->getProductosAll();
+                    $categorias = $this->categoriaModel->getCategorias();
+                    $this->adminView->formularioAdmin($productos, $categorias, "No se puede borrar porque esta siendo usada en productos");
+                }
             }
-        } 
+        }             
     
 
         function formEditarProducto($id_producto){
@@ -121,7 +129,6 @@
                 if($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == 
                 "image/jpeg" || $_FILES['imagen']['type'] == "image/png"){
 
-                    
                     $this->productoModel->updateProducto($id_producto,$nombre,$descripcion,$precio,$categoria,$_FILES['imagen']['tmp_name']);
 
                 }

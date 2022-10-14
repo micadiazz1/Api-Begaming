@@ -236,6 +236,11 @@ ul.navegacion li:hover {
         height: 100px;
         width: 100px;
     }
+    .tituloForm{
+        font-family:tahoma;
+        font-size: 20px;
+        color:rgb(9, 54, 52);
+    }
 }
 
              
