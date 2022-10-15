@@ -69,7 +69,8 @@
                 <input type="text" name="nombre_categoria" id="nombre_categoria"  placeholder="nombre">
                 <input type="submit" value="Guardar">     
         </form>
-        {$error}
+
+        <strong class="advertencia">{$error}</strong>
     </div>
    
     

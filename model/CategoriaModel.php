@@ -7,7 +7,7 @@
             $this->db = new PDO('mysql:host=localhost;'.'dbname=db_begaming;charset=utf8', 'root', '');
         }
         function getCategorias(){
-            //Enviamos la consulta y nos devuelve el resultado
+            //Envio la consulta y nos devuelve el resultado
             $query = $this->db->prepare( 'SELECT * from categoria');
             $query->execute();
             $categorias = $query->fetchAll(PDO::FETCH_OBJ);

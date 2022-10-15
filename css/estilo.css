@@ -241,6 +241,9 @@ ul.navegacion li:hover {
         font-size: 20px;
         color:rgb(9, 54, 52);
     }
+    .advertencia{
+        color: red;
+    }
 }
 
              

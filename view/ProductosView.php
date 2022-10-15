@@ -22,11 +22,7 @@
 
         }
         
-        // VERIFICAR A VER SI HACER 2 FUNCIONES PA 
-        // OJO
-
-
-        // FIJARTEEE
+        
         function detailCategoriaView($productoCategoria,$categorias){/* detalle de la tabla categoria */
             $this->smarty->assign('nombreCategoria',$categorias->nombre_categoria);
             $this->smarty->assign('categorias', $productoCategoria);
