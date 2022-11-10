@@ -1,6 +1,6 @@
 <?php
 require_once './libs/Router.php';
-require_once './Controller/ApiController.php';
+require_once './Controller/ApiProductoController.php';
 
 // crea el router
 $router = new Router();
@@ -9,13 +9,15 @@ $router = new Router();
 
 
 
-$router->addRoute('producto', 'GET', 'ApiController', 'getProductos');
-$router->addRoute('producto/:ID', 'GET', 'ApiController', 'getProducto');
-$router->addRoute('producto/:ID', 'DELETE', 'ApiController', 'deleteProducto');
-$router->addRoute('producto','POST', 'ApiController', 'insertProducto');
+$router->addRoute('producto', 'GET', 'ApiProductoController', 'getProductos');
+$router->addRoute('producto/:ID', 'GET', 'ApiProductoController', 'getProducto');
+$router->addRoute('producto/:ID', 'DELETE', 'ApiProductoController', 'deleteProducto');
+$router->addRoute('producto','POST', 'ApiProductoController', 'insertProducto');
 
-$router->addRoute('producto?sort=calificacion&order=asc', 'GET', 'productoApiController', 'getResenia');
+$router->addRoute('producto/:ID/resenia', 'GET', 'ApiProductoController', 'getResenia');
 
+
+//sort=calificacion&order=asc
 
 // ejecuta la ruta (sea cual sea)
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);
