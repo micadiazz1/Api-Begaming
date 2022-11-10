@@ -45,7 +45,7 @@ class ApiProductoController {
             if(($order == 'asc' || $order  == 'desc') && (in_array($sort, $datosArray))){
             
                 $resenia = $this->productoModel->getAllReseniaByProducto($id,strtolower($sort),strtolower($order));
-                $this->view->response($resenia, 201);
+                $this->view->response($resenia, 200);
             }
         }
         else{
