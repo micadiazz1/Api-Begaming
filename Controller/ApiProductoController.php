@@ -12,7 +12,7 @@ class ApiProductoController {
     public function __construct() {
         $this->productoModel = new ProductoModel();
         $this->view = new ApiView();
-        
+
         // lee el body del request
         $this->data = file_get_contents("php://input");
     }
@@ -21,39 +21,28 @@ class ApiProductoController {
         return json_decode($this->data);
     }
 
-    public function getProductos($params = null) {
-        
-        $producto = $this->productoModel->getProductos();
-        $this->view->response($producto,200);
+    public function getProductos($limit = null, $offset = null) { 
+ 
 
-    }
-
-    public function getResenia($params = null){
-        $id = $params[':ID'];
-
-        $datosArray = [
-            "precio",
-            "id_resenia",
-            "calificacion",
-            "resenia"
-        ];
-
-        
-        if(!empty($_GET['sort']) && !empty($_GET['order'])){
-            $sort =strtolower($_GET['sort']);
-            $order =strtolower($_GET['order']);
-            if(($order == 'asc' || $order  == 'desc') && (in_array($sort, $datosArray))){
+        if(isset($_GET['limit']) && isset($_GET['offset'])){
             
-                $resenia = $this->productoModel->getAllReseniaByProducto($id,strtolower($sort),strtolower($order));
-                $this->view->response($resenia, 200);
+            $limit =  $_GET['limit'];
+          
+
+            if(is_numeric( $_GET['limit'])&& is_numeric($_GET['offset'])){
+                     
+                $producto = $this->productoModel->getProductos($_GET['limit'],$_GET['offset']);
+                $this->view->response($producto,200);
             }
+           
         }
-        else{
-            $this->view->response("No se pudo interpretar la url", 400);
+        else {
+            var_dump("holad");
+            $producto = $this->productoModel->getProductos();
+            $this->view->response($producto,200);
         }
     }
 
-    
 
     public function getProducto($params = null) {
         // obtengo el id del arreglo de params

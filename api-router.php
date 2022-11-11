@@ -1,6 +1,7 @@
 <?php
 require_once './libs/Router.php';
 require_once './Controller/ApiProductoController.php';
+require_once './Controller/ApiReseniaController.php';
 
 // crea el router
 $router = new Router();
@@ -14,7 +15,7 @@ $router->addRoute('producto/:ID', 'GET', 'ApiProductoController', 'getProducto')
 $router->addRoute('producto/:ID', 'DELETE', 'ApiProductoController', 'deleteProducto');
 $router->addRoute('producto','POST', 'ApiProductoController', 'insertProducto');
 
-$router->addRoute('producto/:ID/resenia', 'GET', 'ApiProductoController', 'getResenia');
+$router->addRoute('producto/:ID/resenia', 'GET', 'ApiReseniaController', 'getReseniasByProducto');
 
 
 //sort=calificacion&order=asc
