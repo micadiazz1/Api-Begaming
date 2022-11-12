@@ -14,7 +14,7 @@ class ProductoModel {
         $query->execute();
         }
         else{
-          $query = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, id_categoria_fk FROM producto  ");
+          $query = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, id_categoria_fk FROM producto");
           $query->execute();
         }
         $product = $query->fetchAll(PDO::FETCH_OBJ);
