@@ -22,22 +22,10 @@ class ApiProductoController {
     }
 
     public function getProductos( ) { 
- 
 
-        if(isset($_GET['limit']) && isset($_GET['offset'])){
-            
-            if(is_numeric( $_GET['limit'])&& is_numeric($_GET['offset'])){
-                     
-                $producto = $this->productoModel->getProductos($_GET['limit'],$_GET['offset']);
-                $this->view->response($producto,200);
-            }
-           
-        }
-        else {
-            
-            $producto = $this->productoModel->getProductos();
-            $this->view->response($producto,200);
-        }
+        $producto = $this->productoModel->getProductos();
+        $this->view->response($producto,200);
+    
     }
 
 

@@ -7,16 +7,11 @@ class ProductoModel {
     function __construct(){
       $this->db = new PDO('mysql:host=localhost;'.'dbname=db_begaming;charset=utf8', 'root', '');
     }
-    function getProductos($limit = null, $offset = null){ 
-        //muestro todos los productos
-        if($limit!= null && $offset != null){
-        $query = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, id_categoria_fk FROM producto LIMIT $limit OFFSET $offset ");
+    function getProductos(){ 
+      
+        $query = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, id_categoria_fk FROM producto");
         $query->execute();
-        }
-        else{
-          $query = $this->db->prepare("SELECT id_producto, nombre, descripcion, precio, id_categoria_fk FROM producto");
-          $query->execute();
-        }
+        
         $product = $query->fetchAll(PDO::FETCH_OBJ);
         return $product;
        
