@@ -30,11 +30,11 @@ class ApiProductoController {
 
 
     public function getProducto($params = null) {
-        // obtengo el id del arreglo de params
+        
         $id = $params[':ID'];
         $producto = $this->productoModel->getProducto($id);
 
-        // si no existe devuelvo 404
+        
         if ($producto)
             $this->view->response($producto);
         else 
