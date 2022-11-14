@@ -45,7 +45,7 @@ class ApiReseniaController {
             else if(isset($_GET['sort']) && isset($_GET['order'])){
                 $sort =strtolower($_GET['sort']);
                 $order =strtolower($_GET['order']);
-                if(($order == 'asc' || $order  == 'desc') && (in_array($sort, $datosArray))){
+                if(($order == 'asc' || $order  == 'desc')&& (in_array($sort, $datosArray))){
                 $resenia = $this->reseniaModel->getAllReseniaByProducto($id,strtolower($sort),strtolower($order),null,null);
                 $this->view->response($resenia, 200);
                 }

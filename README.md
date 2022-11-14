@@ -1,6 +1,6 @@
-API REST para el recurso de productos
+# API REST para el recurso de productos
 
-Una API REST sencilla para manejar un CRUD de hardware y resenias de la misma.
+# Una API REST sencilla para manejar un CRUD de productos y resenias de la misma.
 
 
 Postman
