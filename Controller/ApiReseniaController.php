@@ -19,7 +19,8 @@ class ApiReseniaController {
     public function getReseniasByProducto($params = null){
         $id = $params[':ID'];
         $resenia = $this->reseniaModel->getAllReseniaByProducto($id);
-        
+        $cantidadProductos = count($resenia);
+
         $datosArray = [
             "precio",
             "id_resenia",
@@ -37,29 +38,30 @@ class ApiReseniaController {
                     $this->view->response($resenia, 200);
                 }
                 else{
-                    $this->view->response("No se pudo interpretar esa", 400);
+                    $this->view->response("No se pudo interpretar esa url", 400);
                    
                 }
             }
             else if(isset($_GET['sort']) && isset($_GET['order'])){
                 $sort =strtolower($_GET['sort']);
                 $order =strtolower($_GET['order']);
-                if(($order == 'asc' || $order  == 'desc')&& (in_array($sort, $datosArray))){
+                if(($order == 'asc' || $order  == 'desc') && (in_array($sort, $datosArray))){
                 $resenia = $this->reseniaModel->getAllReseniaByProducto($id,strtolower($sort),strtolower($order),null,null);
                 $this->view->response($resenia, 200);
                 }
                 else{
-                    $this->view->response("No se pudo interpretar esa", 400);
+                    $this->view->response("No se pudo interpretar esa url", 400);
                    
                 }
             }
             else if(isset($_GET['limit']) && isset($_GET['offset'])){
-                if(is_numeric( $_GET['limit'])&& is_numeric($_GET['offset'])){
+            
+                if((is_numeric($_GET['limit'])&& is_numeric($_GET['offset'])) && (($_GET['offset'])<$cantidadProductos)){
                     $resenia = $this->reseniaModel->getAllReseniaByProducto($id,null,null,$_GET['limit'],$_GET['offset']);
                     $this->view->response($resenia,200);
                 }
                 else{
-                    $this->view->response("No se pudo interpretar esa", 400);
+                    $this->view->response("No se pudo interpretar esa url", 400);
                    
                 }
             }
