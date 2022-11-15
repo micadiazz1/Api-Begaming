@@ -21,7 +21,7 @@ class ProductoModel {
 
     function  getProducto($id){
         
-        $query = $this->db->prepare('SELECT producto.nombre, producto.descripcion, producto.precio, producto.id_categoria_fk, categoria.nombre_categoria FROM producto  JOIN categoria ON  producto.id_categoria_fk = categoria.id_categoria WHERE id_producto = ?');
+        $query = $this->db->prepare('SELECT producto.id_producto, producto.nombre, producto.descripcion, producto.precio, producto.id_categoria_fk, categoria.nombre_categoria FROM producto  JOIN categoria ON  producto.id_categoria_fk = categoria.id_categoria WHERE id_producto = ?');
         $query->execute([$id]);
         $detailProduct = $query->fetch(PDO::FETCH_OBJ);
     

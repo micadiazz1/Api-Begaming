@@ -56,7 +56,7 @@ class ApiReseniaController {
             }
             else if(isset($_GET['limit']) && isset($_GET['offset'])){
             
-                if((is_numeric($_GET['limit'])&& is_numeric($_GET['offset'])) && (($_GET['offset'])<$cantidadProductos)){
+                if(is_numeric($_GET['limit'])&& is_numeric($_GET['offset'])){
                     $resenia = $this->reseniaModel->getAllReseniaByProducto($id,null,null,$_GET['limit'],$_GET['offset']);
                     $this->view->response($resenia,200);
                 }
